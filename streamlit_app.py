@@ -1,22 +1,11 @@
 import streamlit as st
 
-# Include custom CSS for styling the camera input
-st.markdown(
-    """
-    <style>
-    /* Force the camera input to full width and height on mobile */
-    video {
-        width: 100vw !important;
-        height: 100vh !important;
-        object-fit: cover !important;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+# File uploader to allow the user to upload an image
+uploaded_file = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
 
-# Camera input to capture an image
-img = st.camera_input("Take a picture")
-
-if img:
-    st.image(img)
+if uploaded_file is not None:
+    # Display the uploaded image
+    st.image(uploaded_file, caption='Uploaded Image.', use_column_width=True)
+    st.write("File Uploaded successfully!")
+else:
+    st.write("Please upload an image file.")
