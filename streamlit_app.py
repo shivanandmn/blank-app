@@ -1,18 +1,17 @@
 import streamlit as st
 
-# Custom CSS to make the camera full screen on mobile
+# Include custom CSS for styling the camera input
 st.markdown(
     """
     <style>
-    /* This sets the video and canvas elements to full screen width */
-    @media only screen and (max-width: 600px) {
-        .stCameraInput div div div canvas, .stCameraInput div div div video {
-            width: 100vw !important;
-            height: auto !important;
-        }
+    /* Force the camera input to full width and height on mobile */
+    video {
+        width: 100vw !important;
+        height: 100vh !important;
+        object-fit: cover !important;
     }
     </style>
-    """, 
+    """,
     unsafe_allow_html=True
 )
 
